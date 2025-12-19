@@ -6,6 +6,7 @@
     <title>喜結良緣 - 蔡耀文 & 王晴萱</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap">
     <style>
         /* 循跡文旅風格色票 (奶油/咖啡色調) */
         :root {
@@ -23,26 +24,73 @@
             font-family: 'Noto Sans TC', sans-serif;
             background-color: var(--bg-cream);
             color: var(--text-brown);
+            margin: 0;
+            padding: 0;
+            background-image: none;
+            overflow-x: hidden;
+        }
+
+        /* 封面全螢幕區塊 */
+        .intro-screen {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            margin: 0;
-            padding-bottom: 40px;
-            background-image: none;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background-color: var(--bg-cream);
+            /* 加入一點點紋理質感 */
+            background-image: radial-gradient(#e0d9c5 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .intro-text {
+            font-family: 'Noto Serif TC', serif; /* 使用襯線體更有文學感 */
+            line-height: 2.2;
+            font-size: 1.05rem;
+            color: var(--title-coffee);
+            margin-bottom: 2rem;
+            opacity: 0; /* 初始隱藏，用於動畫 */
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .intro-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 0.5s forwards;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--decoration-gold);
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2s forwards, bounce 2s infinite 2s;
         }
 
         /* 主卡片容器 */
         .cafe-card {
             background-color: var(--card-white);
-            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.08); /* 暖棕色陰影 */
-            border-radius: 20px;
+            box-shadow: 0 -10px 30px rgba(109, 76, 65, 0.05); /* 陰影往上，製造層次感 */
+            border-radius: 20px 20px 0 0; /* 上方圓角 */
             border: 1px solid var(--border-tan);
+            border-bottom: none;
             position: relative;
             overflow: hidden;
             width: 100%;
             max-width: 48rem;
             margin: 0 auto;
+            min-height: 100vh; /* 確保主內容至少填滿一頁 */
         }
 
         /* 頂部裝飾條 (循跡風格斜紋) */
@@ -277,7 +325,7 @@
             box-shadow: 0 4px 10px rgba(109, 76, 65, 0.1);
         }
 
-        /* 表單輸入框 (保留樣式，雖然移除功能，但留著CSS不影響) */
+        /* 表單輸入框 */
         .form-input {
             width: 100%;
             padding: 0.75rem;
@@ -289,14 +337,55 @@
             transition: border-color 0.3s;
         }
 
+        /* 動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
         @media (max-width: 768px) {
-            body { padding-top: 0; }
-            .cafe-card { border-radius: 0; border: none; box-shadow: none; }
+            .cafe-card { border-radius: 20px 20px 0 0; border-left: none; border-right: none; box-shadow: none; border-top: 1px solid var(--border-tan); }
         }
     </style>
 </head>
 <body>
 
+    <!-- 1. 滿版封面簡述 (Intro Screen) -->
+    <div id="intro" class="intro-screen">
+        <h2 class="intro-title">Ayao & Sherry</h2>
+        <div class="intro-text">
+            <p>牽手共伴十年，彷彿一瞬。</p>
+            <p>還記得第一次相約見面，</p>
+            <p>是在風雨交加的颱風夜。</p>
+            <br>
+            <p>從學生時期的青春羞澀，</p>
+            <p>到畢業後南北相隔的遠距日子，</p>
+            <p>我們一路走過，彼此相伴。</p>
+            <br>
+            <p>如今，我們一同落腳在浪漫的南國恆春。</p>
+            <p>這段旅程中，感謝親愛的家人與朋友</p>
+            <p>始終陪伴與照顧，</p>
+            <p>讓我們擁有了全宇宙最幸福的青春記憶。</p>
+            <br>
+            <p>在交往的第十週年，</p>
+            <p>我們決定攜手邁向人生的下一段旅程。</p>
+            <br>
+            <p>誠摯邀請最親愛的你們，</p>
+            <p>一同見證這份美好的時刻。</p>
+        </div>
+        
+        <div class="scroll-hint">
+            <p class="text-sm mb-1">往下滑動進入</p>
+            <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </div>
+
+    <!-- 2. 主要內容卡片 -->
     <div class="cafe-card">
         
         <!-- Header -->
@@ -436,7 +525,7 @@
                 </div>
             </section>
 
-            <!-- Section 5: 愛情測驗 -->
+            <!-- Section 5: 愛情測驗 (更新邏輯) -->
             <section id="qa_couple">
                 <h3 class="section-title">新人趣聞・Quiz</h3>
                 <p class="mb-4 text-sm">關於耀文與晴萱的小秘密，您知曉多少？</p>
@@ -463,8 +552,8 @@
                 <div class="quiz-question" data-question-id="3">
                     <p class="font-bold text-[#6d4c41] mb-3">3. 求婚的地點在哪裡？</p>
                     <label class="quiz-option"><input type="radio" name="q3" value="A" class="mr-2 accent-[#d8896a]"> A. 東港大鵬灣蚵殼島 </label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="B" class="mr-2 accent-[#d8896a]"> B. 日本長野上高地明神池 </label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="C" class="mr-2 accent-[#d8896a]"> C. 大雪山國家森林遊樂區 </label>
+                    <label class="quiz-option"><input type="radio" name="q3" value="B" class="mr-2 accent-[#d8896a]"> B. 日本長野上高地明神池</label>
+                    <label class="quiz-option"><input type="radio" name="q3" value="C" class="mr-2 accent-[#d8896a]"> C. 大雪山國家森林遊樂區</label>
                     <div class="feedback-message" id="feedback-3"></div>
                 </div>
             </section>
@@ -479,8 +568,8 @@
                         <span class="text-xl text-[#d8896a]">+</span>
                     </div>
                     <div class="qa-answer">
-                        歡迎大家於 <strong>11:30</strong> 左右提前抵達，我們現場準備了迎賓小點心，讓大家在開桌前可以先填填肚子、聊聊天。
-                        <div class="en-text mt-2 border-t border-dashed border-[#e0d9c5] pt-2">Please arrive around 11:30. Welcome snacks will be served.</div>
+                        歡迎大家於 <strong>12:00</strong> 左右提前抵達，我們現場準備了迎賓小點心，讓大家在開桌前可以先填填肚子、聊聊天。
+                        <div class="en-text mt-2 border-t border-dashed border-[#e0d9c5] pt-2">Please arrive around 12:00. Welcome snacks will be served.</div>
                     </div>
                 </div>
 
@@ -491,7 +580,7 @@
                     </div>
                     <div class="qa-answer">
                         我們的場佈以<strong>「秋冬大地色調」</strong>為主，歡迎大家搭配同色系穿搭！建議穿著舒適為主 (Semi-Formal)。
-                        <div class="en-text mt-2 border-t border-dashed border-[#e0d9c5] pt-2">Semi-formal. Earth tones are welcome to match our theme. Pingtung is usually warm.</div>
+                        <div class="en-text mt-2 border-t border-dashed border-[#e0d9c5] pt-2">Semi-formal. Earth tones are welcome to match our theme.</div>
                     </div>
                 </div>
 
@@ -535,7 +624,7 @@
                 <div class="gallery-container">
                     <div class="gallery-item"><img src="photo1.jpg" alt="婚紗照1" onerror="this.style.display='none'"></div>
                     <div class="gallery-item"><img src="photo2.jpg" alt="婚紗照2" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="photo5.jpg" alt="婚紗照4" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="photo5.jpg" alt="婚紗照3" onerror="this.style.display='none'"></div>
                 </div>
                 <p class="text-center text-xs text-[#a1887f] mt-2">← 左右滑動查看更多 →</p>
             </section>
@@ -612,8 +701,9 @@
                 });
             });
 
-            // 測驗邏輯
-            const answers = { '1': 'C', '2': 'C', '3': 'B' }; // 正確答案
+            // 測驗邏輯 (更新正確答案與回饋文字)
+            const answers = { '1': 'C', '2': 'B', '3': 'B' }; 
+            
             document.querySelectorAll('.quiz-question').forEach(q => {
                 q.querySelectorAll('input').forEach(input => {
                     input.addEventListener('change', (e) => {
@@ -622,7 +712,22 @@
                         const fb = document.getElementById(`feedback-${qId}`);
                         fb.style.display = 'block';
                         fb.className = `feedback-message ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
-                        fb.innerText = isCorrect ? '✦ 答對了！您真懂我們！' : '✦ 猜錯了，這可是個小秘密！';
+                        
+                        // 客製化回饋文字
+                        let message = '';
+                        if (isCorrect) {
+                            if (qId === '1') {
+                                message = '✦ 沒錯，我們就這樣尬了1個多小時。';
+                            } else if (qId === '3') {
+                                message = '✦ 因此每年都要回去上高地進香（在那邊藉口）';
+                            } else {
+                                message = '✦ 以～';
+                            }
+                        } else {
+                            message = '✦ 答錯了，恭喜你加入當天擋酒部隊！';
+                        }
+                        
+                        fb.innerText = message;
                         q.querySelectorAll('input').forEach(i => i.disabled = true);
                     });
                 });
@@ -631,3 +736,5 @@
     </script>
 </body>
 </html>
+
+
