@@ -544,12 +544,23 @@
             <!-- Section 7: 婚紗相本 -->
             <section id="gallery">
                 <h3 class="section-title">婚紗相本・Gallery</h3>
-                <div class="gallery-container">
-                    <!-- 請替換成您的婚紗照連結 -->
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="婚紗照範例1"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511285560982-1351cdeb9821?auto=format&fit=crop&w=600&q=80" alt="婚紗照範例2"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80" alt="婚紗照範例3"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?auto=format&fit=crop&w=600&q=80" alt="婚紗照範例4"></div>
+                div class="gallery-container">
+                    <!-- 使用本地圖片連結，並加入 onerror 處理 -->
+                    <div class="gallery-item">
+                        <img src="photo1.jpg" alt="婚紗照1" onerror="this.src='https://placehold.co/600x800/eee/999?text=Photo+1+Missing'">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photo2.jpg" alt="婚紗照2" onerror="this.src='https://placehold.co/600x800/eee/999?text=Photo+2+Missing'">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photo3.jpg" alt="婚紗照3" onerror="this.src='https://placehold.co/600x800/eee/999?text=Photo+3+Missing'">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photo4.jpg" alt="婚紗照4" onerror="this.src='https://placehold.co/600x800/eee/999?text=Photo+4+Missing'">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photo5.jpg" alt="婚紗照5" onerror="this.src='https://placehold.co/600x800/eee/999?text=Photo+4+Missing'">
+                    </div>
                 </div>
                 <p class="text-center text-xs text-[#a1887f] mt-2">← 左右滑動查看更多 →</p>
             </section>
